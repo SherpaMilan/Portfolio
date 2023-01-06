@@ -3,7 +3,7 @@
 //creating variables using css mode
 :root {
   --color-first: rgba(153, 205, 50, 0.647);
-  --body-color: rgb(247, 242, 242);
+  --body-color: #fff;
 
   --font-PT: "PT Serif", serif;
   --font-Zilla: "Zilla Slab", serif;
@@ -12,6 +12,35 @@
   --text-color: #000;
   --color-dark: #2a2a2a;
   --border-color: #2a2a;
+
+  --darkmode-color: var(--color-dark);
+  --dark-text-color: #fff;
+  --dark-link-color: var(--color-first);
+  --dark-border-color: #fff;
+}
+
+//dark mode
+.dark-mode-checkbox:checked ~ .wrapper {
+  --body-color: var(--darkmode-color);
+  --text-color: var(--dark-text-color);
+  --link-color: var(--dark-link-color);
+  --border-color: var(--dark-border-color);
+}
+
+#darkmode {
+  position: fixed;
+  top: 8.5rem;
+  left: 1rem;
+}
+.toggle {
+  position: fixed;
+  top: 8.5rem;
+  left: 1rem;
+  cursor: pointer;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 //creating variables using scss mode
@@ -48,10 +77,10 @@ a {
   justify-content: space-between;
 
   align-items: center;
-
+  background: var(--body-color);
   padding: 1rem 2rem;
   box-shadow: 0 2px 8px yellowgreen;
-
+  z-index: 999;
   position: sticky;
   top: 0;
   height: 100px;
@@ -98,6 +127,56 @@ a {
         a {
           &:hover {
             color: $primaryColor;
+          }
+        }
+      }
+    }
+  }
+
+  @include tablet() {
+    .right {
+      .checkBtn {
+        display: block;
+      }
+
+      .primary-navigation {
+        width: 15rem;
+        height: 100vh;
+        background: var(--body-color);
+        box-shadow: 0 3px 5px 0 #000;
+        flex-direction: column;
+        position: fixed;
+        top: 6.3rem;
+        right: -15rem;
+        z-index: 999;
+        transition: 0.5sec ease;
+
+        li {
+          padding-left: 1rem;
+
+          &:nth-child(1) {
+            padding: 2rem 0 0 1rem;
+          }
+        }
+      }
+
+      #check:checked ~ ul {
+        right: 0;
+        transition: 0.5s ease;
+      }
+    }
+  }
+
+  @include mobile() {
+    .logo {
+      h1 {
+        font-size: 1.1rem;
+      }
+      div {
+        .line {
+          font-size: 1.3rem;
+          &::before {
+            left: 40%;
           }
         }
       }
@@ -210,6 +289,16 @@ section {
   }
 }
 
+@include mobile() {
+  .section1 {
+    .left {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
 .section2 {
   justify-content: center;
 
@@ -224,7 +313,7 @@ section {
       .info-container {
         i {
           font-size: 2.5rem;
-          color: var(--color-first);
+          color: #c2129cde;
         }
       }
       div {
@@ -232,7 +321,7 @@ section {
           letter-spacing: 2px;
         }
         p {
-          color: black;
+          color: rgb(88, 13, 208);
         }
       }
     }
@@ -240,6 +329,20 @@ section {
       background: violet;
       width: 2px;
       height: 35px;
+    }
+  }
+
+  @include tablet() {
+    .info-container {
+      width: 100%;
+      font-size: 1.5rem;
+      padding: 1rem;
+      border-radius: 10px;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .info-divider {
+      display: none;
     }
   }
 }
@@ -262,13 +365,18 @@ section {
       }
     }
   }
-}
+  @include tablet() {
+    .skills-container {
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
 
-@include tablet() {
-  .skills-container {
-    gap: 2.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
+  @include table() {
+    .skills-container {
+      font-size: 2rem;
+    }
   }
 }
 
@@ -308,7 +416,16 @@ section {
       }
     }
   }
+
+  @include mobile() {
+    .projects-container {
+      width: 100vw;
+      padding: 3rem 0.5rem;
+    }
+  }
 }
+
+//about
 
 .section5 {
   flex-direction: column;
@@ -381,6 +498,39 @@ section {
       }
     }
   }
+
+  @include laptop() {
+    .about-container {
+      flex-direction: column;
+
+      .left,
+      .right {
+        width: 100%;
+        text-align: center;
+      }
+      .right {
+        .div {
+          justify-content: center;
+        }
+      }
+    }
+  }
+
+  @include mobile() {
+    .about-container {
+      width: 100vw;
+
+      .right {
+        h1 {
+          font-size: 1.5rem;
+        }
+        div {
+          width: 80%;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
 }
 
 //contact section
@@ -428,5 +578,85 @@ section {
         color: #fff;
       }
     }
+  }
+
+  @include mobile() {
+    .socials {
+      gap: 2rem;
+    }
+  }
+}
+
+//footer section
+footer {
+  background: #000;
+  color: #fff;
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .footer-top {
+      justify-content: space-around;
+      align-items: flex-start;
+      padding: 4rem;
+      width: 80%;
+      text-align: center;
+
+      div {
+        ul {
+          margin-top: 1rem;
+          flex-direction: column;
+          gap: 0.5rem;
+          list-style: none;
+
+          li:hover {
+            color: var(--color-first);
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+      gap: 2rem;
+      padding-bottom: 1rem;
+    }
+  }
+}
+//scroll section
+.scroll-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--color-first);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  z-index: 999;
+  cursor: pointer;
+
+  .scroll-btn {
+    font-size: 1.5rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: arrow infinite 2s ease;
+  }
+}
+
+@keyframes arrow {
+  0% {
+    top: 50%;
+  }
+  50% {
+    top: 70%;
+    opacity: 0.1;
+  }
+  100% {
+    top: 40%;
   }
 }
