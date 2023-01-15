@@ -36,21 +36,21 @@
 //creating variables using scss mode
 $primaryColor: #ff7300f8;
 
-// //darkmode
-// #darkMode {
-//   position: fixed;
-//   top: 8.5rem;
-//   left: 1rem;
-//   display: none;
-// }
+//darkmode
+#darkMode {
+  position: fixed;
+  top: 8.5rem;
+  left: 1rem;
+  display: none;
+}
 
-// .toggle {
-//   position: fixed;
-//   top: 8.5rem;
-//   left: 2rem;
-//   cursor: pointer;
-//   z-index: 999;
-// }
+.toggle {
+  position: fixed;
+  top: 8.5rem;
+  left: 2rem;
+  cursor: pointer;
+  // z-index: 999;
+}
 
 html {
   scroll-behavior: smooth;
@@ -88,6 +88,7 @@ a {
   position: sticky;
   top: 0;
   height: 100px;
+  color: var(--text-color);
 
   .logo {
     position: relative;
@@ -100,8 +101,8 @@ a {
         content: "";
         background: $primaryColor;
 
-        height: 95%;
-        width: 5px;
+        height: 100%;
+        width: 6px;
         position: absolute;
         top: 0;
         left: 60%;
@@ -239,7 +240,7 @@ section {
     gap: 0.9rem;
 
     justify-content: center;
-    align-items: center;
+    //align-items: center;
 
     div {
       .name {
@@ -254,6 +255,7 @@ section {
         font-size: 2rem;
         font-family: var(--font-PT);
         font-weight: bold;
+        margin-top: 1rem;
       }
     }
 
@@ -267,13 +269,10 @@ section {
       color: white;
       cursor: pointer;
       margin-top: 2rem;
-      font-size: 1.5rem;
-      font-family: var(--font-Zilla);
 
       i {
-        // color: var(--color-first);
-        color: green;
         font-size: 1.5rem;
+        color: var(--color-first);
       }
     }
   }
@@ -308,29 +307,31 @@ section {
 
   .info-container {
     width: 80vw;
-    border: 1px solid black;
+    border: 1px solid var(--border-color);
     border-radius: 50px;
     justify-content: space-between;
     padding: 1rem 2rem;
+    color: var(--text-color);
 
     .info-lists {
       .info-container {
         i {
           font-size: 2.5rem;
-          color: #c2129cde;
+          color: var(--color-first);
         }
       }
+
       div {
         h5 {
           letter-spacing: 2px;
         }
         p {
-          color: rgb(88, 13, 208);
+          color: #cb9a08;
         }
       }
     }
     .info-divider {
-      background: violet;
+      background: grey;
       width: 2px;
       height: 35px;
     }
@@ -365,7 +366,12 @@ section {
       align-items: center;
 
       i {
-        font-size: 2rem;
+        font-size: 4rem;
+        color: rgba(128, 0, 128, 0.8);
+      }
+
+      span {
+        color: var(--text-color);
       }
     }
   }
@@ -377,7 +383,7 @@ section {
     }
   }
 
-  @include table() {
+  @include tablet() {
     .skills-container {
       font-size: 2rem;
     }
@@ -392,6 +398,7 @@ section {
   gap: 2rem;
   .title {
     font-size: 2rem;
+    color: var(--text-color);
   }
   .projects-container {
     width: 100%;
@@ -400,6 +407,7 @@ section {
 
     .project-card {
       flex-direction: column;
+      color: var(--text-color);
 
       .top {
         img {
@@ -438,10 +446,11 @@ section {
   color: var(--text-color);
 
   .title {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   .about-container {
     padding: 3rem;
+    // margin-top: 2rem;
 
     .left {
       width: 50%;
@@ -452,7 +461,7 @@ section {
       .bg {
         position: absolute;
         width: 95%;
-        height: 65%;
+        height: 25%;
         background: var(--color-first);
         bottom: 0;
         z-index: 0;
@@ -481,12 +490,14 @@ section {
 
       a {
         color: var(--link-color);
+        font-size: 1.4rem;
       }
 
       > div {
         flex-direction: column;
         .tag {
           font-weight: bold;
+          font-size: 1.3rem;
         }
         div {
           display: flex;
@@ -579,7 +590,7 @@ section {
       cursor: pointer;
 
       a {
-        color: rgb(153, 153, 153);
+        color: rgb(104, 6, 6);
       }
 
       .send {
@@ -597,7 +608,7 @@ section {
 
 //footer section
 footer {
-  background: #232323;
+  background: #232323f0;
   color: #fff;
 
   .footer-container {
